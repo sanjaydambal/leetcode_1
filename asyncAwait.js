@@ -22,13 +22,27 @@
 //         console.error(err);
 //     });
 
-    const fetched = async () => {
-        try{
-            const response = await fetch("http://jsonplaceholder.typicode.com/users/1")
-            const data = await response.json();
-            console.log(data)
-        }catch(err){
-console.log(err)
-        }
-    }
-fetched()
+//     const fetched = async () => {
+//         try{
+//             const response = await fetch("http://jsonplaceholder.typicode.com/users/1")
+//             const data = await response.json();
+//             console.log(data)
+//         }catch(err){
+// console.log(err)
+//         }
+//     }
+// fetched()
+
+async function taskA(){
+    await new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log("Task A is executed")
+            resolve()
+        },1000)
+    })
+}
+function taskB(){
+console.log("Task B is executed")
+}
+
+taskA().then(taskB)
